@@ -19,11 +19,8 @@ ai-chatbot/
 │   ├── styles.css       # Front-end CSS styling
 │   └── script.js        # Front-end JavaScript for chat interaction
 │
-├── .gitignore           # Ignore node_modules and .env files
 ├── README.md             # Project documentation
 ├── package.json          # Node.js dependencies and scripts
-├── package-lock.json     # Auto-generated lockfile for dependencies
-├── node_modules/         # Installed dependencies (ignored in Git)
 ```
 
 ---
