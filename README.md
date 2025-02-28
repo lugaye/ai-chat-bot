@@ -15,6 +15,8 @@ ai-chatbot/
 │   ├── .env             # Environment variables (OpenAI API key)
 │
 ├── public/
+│   ├── images/
+│       ├── bg.png
 │   ├── index.html       # Front-end HTML file
 │   ├── styles.css       # Front-end CSS styling
 │   └── script.js        # Front-end JavaScript for chat interaction
