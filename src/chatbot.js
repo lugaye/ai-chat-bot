@@ -1,18 +1,24 @@
-const { Configuration, OpenAIApi } = require('openai');
-require('dotenv').config();
+require("dotenv").config();
+const OpenAI = require("openai");
 
-const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
+const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY, 
 });
-const openai = new OpenAIApi(configuration);
 
-async function getResponse(message) {
-    const response = await openai.createCompletion({
-        model: 'text-davinci-003',
-        prompt: message,
-        max_tokens: 150,
-    });
-    return response.data.choices[0].text.trim();
+async function getAIResponse(userMessage) {
+    try {
+        const response = await openai.chat.completions.create({
+            model: "gpt-4o-mini",
+            messages: [{ role: "system", content: "You are an AI chatbot." }, { role: "user", content: userMessage }],
+            max_tokens: 50,
+            temperature: 0.7,
+        });
+
+        return response.choices[0].message.content.trim();
+    } catch (error) {
+        console.error("Error getting AI response:", error);
+        return "Sorry, I couldn't process that request.";
+    }
 }
 
-module.exports = { getResponse };
+module.exports = { getAIResponse };
