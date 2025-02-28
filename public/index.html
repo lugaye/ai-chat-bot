@@ -4,14 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Chatbot</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="images/site.webmanifest">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="chat-container">
-        <div id="chat-box"></div>
-        <input type="text" id="user-input" placeholder="Type a message...">
-        <button onclick="sendMessage()">Send</button>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">AI Chatbot</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>Coding Dreams: Building AI Chatbots</h1>
+            <p>Transforming conversations with AI-powered chatbot solutions.</p>
+            <button class="chat-btn" onclick="toggleChat()">Start Chat</button>
+        </div>
+    </header>
+
+    <!-- Chatbox UI -->
+    <div class="chat-container" id="chatbox">
+        <div class="chat-header">
+            <span>AI Chatbot</span>
+            <button class="close-chat" onclick="toggleChat()">×</button>
+        </div>
+        <div class="chat-body" id="chat-body">
+            <div class="bot-message">Hello! How can I assist you today?</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="user-input" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
