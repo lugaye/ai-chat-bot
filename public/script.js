@@ -1,19 +1,38 @@
+function toggleChat() {
+    let chatbox = document.getElementById("chatbox");
+    chatbox.style.display = chatbox.style.display === "flex" ? "none" : "flex";
+}
+
 async function sendMessage() {
-    const inputField = document.getElementById('user-input');
-    const chatBox = document.getElementById('chat-box');
-    const userMessage = inputField.value;
+    let inputField = document.getElementById("user-input");
+    let message = inputField.value.trim();
+    if (message === "") return;
 
-    if (!userMessage.trim()) return;
+    let chatBody = document.getElementById("chat-body");
 
-    chatBox.innerHTML += `<div><strong>You:</strong> ${userMessage}</div>`;
-    inputField.value = '';
+    // Append User Message
+    let userMessage = document.createElement("div");
+    userMessage.classList.add("user-message");
+    userMessage.textContent = message;
+    chatBody.appendChild(userMessage);
 
-    const response = await fetch('/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMessage })
-    });
+    inputField.value = ""; // Clear input
 
-    const data = await response.json();
-    chatBox.innerHTML += `<div><strong>Bot:</strong> ${data.reply}</div>`;
+    // Send message to backend
+    try {
+        let response = await fetch("http://localhost:5000/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message }),
+        });
+
+        let data = await response.json();
+        let botMessage = document.createElement("div");
+        botMessage.classList.add("bot-message");
+        botMessage.textContent = data.reply;
+        chatBody.appendChild(botMessage);
+        chatBody.scrollTop = chatBody.scrollHeight; // Auto-scroll
+    } catch (error) {
+        console.error("Error:", error);
+    }
 }
