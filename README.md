@@ -1,6 +1,7 @@
 # AI Chatbot with Node.js and OpenAI API
 
 This is a simple AI chatbot built using Node.js, Express, and OpenAI's GPT API, with a front-end powered by HTML, CSS, and vanilla JavaScript.
+🟢 Live Demo: https://ai-chat-bot-gamma-ten.vercel.app/
 
 ---
 
@@ -115,6 +116,12 @@ node src/index.js
 
 ✅ **Server Errors:**
 - Check the terminal output for errors when running `node src/index.js`.
+
+---
+
+## Deployment
+This chatbot is deployed on Vercel. You can try it here:
+🟢 Live Demo: https://ai-chat-bot-gamma-ten.vercel.app/
 
 ---
 
